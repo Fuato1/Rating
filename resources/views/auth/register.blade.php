@@ -1,13 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row p-3">
 
-        <h1>Registro</h1>
-
-        <div class="col-md-12 d-flex justify-content-center jumbotron">            
-            <form method="POST" action="{{ route('login') }}">
+<div class="row">
+    <div class="col-md-12 d-flex justify-content-center">
+            <form class="jumbotron" method="POST" action="{{ route('register') }}">
                 {{ csrf_field() }}
 
                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -59,6 +56,8 @@
                         Login
                     </button>
                 </div>
-        </form>
+            </form>
+        
+    </div>
 </div>
 @endsection

@@ -3,10 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row p-3">
-        <h1>Login</h1>
-
-        <div class="col-md-12 d-flex justify-content-center jumbotron">            
-            <form method="POST" action="{{ route('login') }}">
+        <div class="col-md-12 d-flex justify-content-center">   
+            <form class="jumbotron" method="POST" action="{{ route('login') }}">
                 {{ csrf_field() }}
 
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
