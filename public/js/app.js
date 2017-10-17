@@ -44414,7 +44414,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Home__ = __webpack_require__(264);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Friends__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Friends_Friends__ = __webpack_require__(280);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__FindUsers__ = __webpack_require__(271);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__RateUsers__ = __webpack_require__(272);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -44454,7 +44454,7 @@ var Main = function (_Component) {
                     null,
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'row navbar navbar-dark bg-dark' },
+                        { className: 'col-12 col-sm-12 col-md-12 col-lg-12 col-xs-12 navbar navbar-dark bg-dark' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'span',
                             { className: 'ml-1' },
@@ -44466,7 +44466,7 @@ var Main = function (_Component) {
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
-                            { className: 'row ml-3 mr-1' },
+                            { className: 'row ml-1 mr-1' },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
                                 { className: 'col-12 col-sm-12 col-md-12 col-lg-12 col-xs-12' },
@@ -44498,7 +44498,7 @@ var Main = function (_Component) {
                                 'div',
                                 { className: 'col-md-12' },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/home', component: __WEBPACK_IMPORTED_MODULE_3__Home__["a" /* default */] }),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/friends', component: __WEBPACK_IMPORTED_MODULE_4__Friends__["a" /* default */] }),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/friends', component: __WEBPACK_IMPORTED_MODULE_4__Friends_Friends__["a" /* default */] }),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/findUsers', component: __WEBPACK_IMPORTED_MODULE_5__FindUsers__["a" /* default */] }),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/rate', component: __WEBPACK_IMPORTED_MODULE_6__RateUsers__["a" /* default */] })
                             )
@@ -59543,239 +59543,9 @@ var Home = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Home);
 
 /***/ }),
-/* 265 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Friends_css__ = __webpack_require__(266);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Friends_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Friends_css__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-
-var Friends = function (_Component) {
-    _inherits(Friends, _Component);
-
-    function Friends(props) {
-        _classCallCheck(this, Friends);
-
-        var _this = _possibleConstructorReturn(this, (Friends.__proto__ || Object.getPrototypeOf(Friends)).call(this, props));
-
-        _this.state = {
-            friends: [],
-            hasFriends: false
-        };
-        return _this;
-    }
-
-    _createClass(Friends, [{
-        key: 'getUserFriends',
-        value: function getUserFriends() {
-            var _this2 = this;
-
-            var token = document.cookie;
-
-            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('http://192.168.1.43/getUserFriends', {
-                headers: {
-                    'Authorization': token
-                }
-            }).then(function (res) {
-                if (res.data != "") {
-                    var friends = res.data;
-                    _this2.setState({
-                        friends: friends,
-                        hasFriends: true
-                    });
-                } else {
-                    _this2.setState({
-                        hasFriends: false
-                    });
-                }
-            }).catch(function (err) {
-                console.log(err);
-            });
-        }
-    }, {
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            this.getUserFriends();
-        }
-    }, {
-        key: 'deleteFriend',
-        value: function deleteFriend(friendId) {
-            var _this3 = this;
-
-            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('http://192.168.1.43/deleteFriend', {
-                friendId: friendId
-            }).then(function (res) {
-                _this3.getUserFriends();
-            }).catch(function (err) {
-                console.log(err);
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this4 = this;
-
-            if (this.state.hasFriends) {
-                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: 'containe ml-1' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'col-md-12 d-flex justify-content-center p-3' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'h1',
-                            null,
-                            'Amigos'
-                        )
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'row jumbotron' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'div',
-                            { className: 'col-md-12 d-flex justify-content-center' },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'ul',
-                                { className: 'list-group' },
-                                this.state.friends.map(function (friend, index) {
-                                    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'span',
-                                        { key: index, className: 'list-group-item' },
-                                        friend.name,
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'a',
-                                            { onClick: function onClick() {
-                                                    return _this4.deleteFriend(friend.id);
-                                                }, className: 'float-right ml-5' },
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-times deleteFriend', 'aria-hidden': 'true' })
-                                        )
-                                    );
-                                })
-                            )
-                        )
-                    )
-                );
-            } else {
-                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: 'container' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'col-md-12 d-flex justify-content-center p-3' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'h1',
-                            null,
-                            'Amigos'
-                        )
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'row jumbotron' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'div',
-                            { className: 'col-md-12 d-flex justify-content-center' },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'ul',
-                                { className: 'list-group' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'span',
-                                    { className: 'text-center' },
-                                    'Esta solitario por aqui...'
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'b',
-                                    { className: 'text-center' },
-                                    'Busca nuevos amigos para agregarlos a tu lista'
-                                )
-                            )
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'div',
-                            { className: 'col-md-12 d-flex justify-content-center' },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'button',
-                                { className: 'btn btn-success mt-3' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Link */],
-                                    { className: 'findFriends', to: '/findUsers' },
-                                    'Buscar Amigos'
-                                )
-                            )
-                        )
-                    )
-                );
-            }
-        }
-    }]);
-
-    return Friends;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = (Friends);
-
-/***/ }),
-/* 266 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(267);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(269)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../../node_modules/css-loader/index.js!./Friends.css", function() {
-			var newContent = require("!!../../../../node_modules/css-loader/index.js!./Friends.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 267 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(268)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".findFriends {\r\n    color: white;\r\n}\r\n.deleteFriend:hover {\r\n    color: red;\r\n}", ""]);
-
-// exports
-
-
-/***/ }),
+/* 265 */,
+/* 266 */,
+/* 267 */,
 /* 268 */
 /***/ (function(module, exports) {
 
@@ -60385,14 +60155,10 @@ var FindUsers = function (_Component) {
                     case userId:
                         user.isFriend = "fa fa-star";
                         __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/saveFriend', {
-                            id: user.id,
-                            isFriend: true
+                            id: user.id
                         }).then(function (res) {
-                            console.log(res);
                             _this3.getUsers();
-                        }).catch(function (err) {
-                            console.log(err);
-                        });
+                        }).catch(function (err) {});
                         break;
                 }
             });
@@ -60420,17 +60186,17 @@ var FindUsers = function (_Component) {
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: 'row jumbotron' },
+                    { className: 'row' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'col-md-12 d-flex justify-content-center' },
+                        { className: 'col-md-12 d-flex justify-content-center alert-primary' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'ul',
-                            { className: 'list-group' },
+                            { className: 'list-group p-3' },
                             this.state.users.map(function (user) {
                                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'span',
-                                    { key: user.id, className: 'list-group-item' },
+                                    { key: user.id, className: 'list-group-item m-2' },
                                     user.name,
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'a',
@@ -60512,6 +60278,262 @@ var RateUsers = function (_Component) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Friends_css__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Friends_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Friends_css__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+var Friends = function (_Component) {
+    _inherits(Friends, _Component);
+
+    function Friends(props) {
+        _classCallCheck(this, Friends);
+
+        var _this = _possibleConstructorReturn(this, (Friends.__proto__ || Object.getPrototypeOf(Friends)).call(this, props));
+
+        _this.state = {
+            friends: [],
+            hasFriends: false
+        };
+        return _this;
+    }
+
+    _createClass(Friends, [{
+        key: 'getUserFriends',
+        value: function getUserFriends() {
+            var _this2 = this;
+
+            var token = document.cookie;
+
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('http://192.168.1.43/getUserFriends', {
+                headers: {
+                    'Authorization': token
+                }
+            }).then(function (res) {
+                if (res.data != "") {
+                    var friends = res.data;
+                    _this2.setState({
+                        friends: friends,
+                        hasFriends: true
+                    });
+                } else {
+                    _this2.setState({
+                        hasFriends: false
+                    });
+                }
+            }).catch(function (err) {
+                console.log(err);
+            });
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.getUserFriends();
+        }
+    }, {
+        key: 'deleteFriend',
+        value: function deleteFriend(friendId) {
+            var _this3 = this;
+
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('http://192.168.1.43/deleteFriend', {
+                friendId: friendId
+            }).then(function (res) {
+                _this3.getUserFriends();
+            }).catch(function (err) {
+                console.log(err);
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this4 = this;
+
+            if (this.state.hasFriends) {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'container' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'row mt-3' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'col-md-4 d-flex justify-content-center mb-3' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'ul',
+                                { className: 'list-group alert-primary' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'h3',
+                                    { className: 'text-center' },
+                                    'Amigos'
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                                this.state.friends.map(function (friend, index) {
+                                    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'span',
+                                        { key: index, className: 'list-group-item m-2' },
+                                        friend.name,
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'a',
+                                            { onClick: function onClick() {
+                                                    return _this4.deleteFriend(friend.id);
+                                                }, className: 'float-right ml-5' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-times deleteFriend', 'aria-hidden': 'true' })
+                                        )
+                                    );
+                                })
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'col-md-7 alert-primary' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'h3',
+                                { className: 'text-center' },
+                                'Notificaciones'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'row p-2' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'h5',
+                                    null,
+                                    'Message'
+                                )
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null)
+                        )
+                    )
+                );
+            } else {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'container' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'col-md-12 d-flex justify-content-center p-3' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'h1',
+                            null,
+                            'Amigos'
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'row jumbotron' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'col-md-12 d-flex justify-content-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'ul',
+                                { className: 'list-group' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'span',
+                                    { className: 'text-center' },
+                                    'Esta solitario por aqui...'
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'b',
+                                    { className: 'text-center' },
+                                    'Busca nuevos amigos para agregarlos a tu lista'
+                                )
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'col-md-12 d-flex justify-content-center' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'button',
+                                { className: 'btn btn-success mt-3' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Link */],
+                                    { className: 'findFriends', to: '/findUsers' },
+                                    'Buscar Amigos'
+                                )
+                            )
+                        )
+                    )
+                );
+            }
+        }
+    }]);
+
+    return Friends;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (Friends);
+
+/***/ }),
+/* 281 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(282);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(269)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../node_modules/css-loader/index.js!./Friends.css", function() {
+			var newContent = require("!!../../../../../node_modules/css-loader/index.js!./Friends.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 282 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(268)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".findFriends {\r\n    color: white;\r\n}\r\n.deleteFriend:hover {\r\n    color: red;\r\n}", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

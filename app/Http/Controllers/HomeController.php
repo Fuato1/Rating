@@ -49,12 +49,10 @@ class HomeController extends Controller
 
     public function saveFriend(Request $request) {
         $friendId = $request->id;
-        $isFriend = $request->isFriend;
         
         $userFriend = new UserFriend();
         $userFriend->user_id = Auth::id();
         $userFriend->friend_id = $friendId;
-        $userFriend->isFriend = $isFriend;
         $userFriend->save();
     }
 

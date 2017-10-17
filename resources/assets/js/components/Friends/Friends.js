@@ -58,16 +58,16 @@ export default class Friends extends Component {
     render() {
         if (this.state.hasFriends) {
             return (
-                <div className="containe ml-1">
-                    <div className="col-md-12 d-flex justify-content-center p-3">
-                        <h1>Amigos</h1>
-                    </div>
-                    <div className="row jumbotron">
-                        <div className="col-md-12 d-flex justify-content-center">
-                            <ul className="list-group">
+                <div className="container">
+                    <div className="row mt-3">
+                        <div className="col-md-4 d-flex justify-content-center mb-3">
+                            <ul className="list-group alert-primary">
+                                <h3 className="text-center">Amigos</h3>
+                                <br/>
+
                                 {this.state.friends.map( 
                                     (friend, index) =>  
-                                    <span key={index} className="list-group-item">
+                                    <span key={index} className="list-group-item m-2">
                                         {friend.name}
                                         <a onClick={ () => this.deleteFriend(friend.id)} className="float-right ml-5">
                                             <i className="fa fa-times deleteFriend" aria-hidden="true"></i>
@@ -76,8 +76,17 @@ export default class Friends extends Component {
                                 )}
                             </ul>
                         </div>
+                        <div className="col-md-7 alert-primary">
+                            <h3 className="text-center">Notificaciones</h3>
+                            <br/>
+
+                            <div className="row p-2">
+                                <h5>Message</h5>
+                            </div>
+                            <hr/>
+                        </div>
                     </div>
-                </div>  
+                </div>
             )  
         } 
         else {

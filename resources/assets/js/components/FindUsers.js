@@ -43,15 +43,12 @@ export default class FindUsers extends Component {
                 case userId:
                 user.isFriend = "fa fa-star"
                 axios.post('/saveFriend', {
-                  id: user.id,
-                  isFriend: true
+                  id: user.id
                 })
                 .then(res => {
-                    console.log(res)
                     this.getUsers()
                 })
                 .catch(err => {
-                    console.log(err)
                 })
                 break;
             }  
@@ -68,12 +65,12 @@ export default class FindUsers extends Component {
                 <div className="col-md-12 d-flex justify-content-center p-3">
                     <h1 className="text-center">Encuentra amigos</h1>
                 </div>
-                <div className="row jumbotron">
-                    <div className="col-md-12 d-flex justify-content-center">
-                        <ul className="list-group">
+                <div className="row">
+                    <div className="col-md-12 d-flex justify-content-center alert-primary">
+                        <ul className="list-group p-3">
                             {this.state.users.map( 
                                 (user) => 
-                                <span key={user.id} className="list-group-item">
+                                <span key={user.id} className="list-group-item m-2">
                                     {user.name}
                                     <a onClick={() => this.follow(user.id) } className="ml-5 float-right">
                                         <i className={user.isFriend} aria-hidden="true"></i>
@@ -83,7 +80,7 @@ export default class FindUsers extends Component {
                         </ul>
                     </div>
                 </div>
-            </div>  
+            </div>
         )
     }
 }
