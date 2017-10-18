@@ -12,7 +12,7 @@ export default class Home extends Component {
     componentDidMount() {
         const token = document.cookie
         
-        axios.get('http://192.168.1.43/getUserInfo', {
+        axios.get('/getUserInfo', {
             headers: {
                 'Authorization': token
             }

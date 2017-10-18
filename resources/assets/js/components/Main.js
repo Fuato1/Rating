@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Home from './Home'
 import Friends from './Friends/Friends'
 import FindUsers from './FindUsers'
+import Messages from './Message/Messages'
+import NewMessage from './Message/NewMessage'
 import RateUsers from './RateUsers'
 
 export default class Main extends Component {
@@ -30,6 +32,9 @@ export default class Main extends Component {
                                 <Link className="btn btn-primary mr-1 ml-1" to="/findUsers">
                                     <i className="fa fa-search" aria-hidden="true"></i>
                                 </Link>
+                                <Link className="btn btn-primary mr-1 ml-1" to="/messages">
+                                    <i className="fa fa-envelope" aria-hidden="true"></i>
+                                </Link>
                                 <Link className="btn btn-primary ml-1" to="/rate">
                                     CU
                                 </Link>
@@ -42,6 +47,8 @@ export default class Main extends Component {
                                 <Route path="/home" component={Home}/>
                                 <Route path="/friends" component={Friends}/>
                                 <Route path="/findUsers" component={FindUsers}/>
+                                <Route path="/messages" component={Messages}/>
+                                <Route path="/newMessage" component={NewMessage}/>
                                 <Route path="/rate" component={RateUsers} />
                             </div>
                         </div>

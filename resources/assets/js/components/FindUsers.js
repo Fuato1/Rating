@@ -12,7 +12,7 @@ export default class FindUsers extends Component {
     getUsers() {
         const token = document.cookie
         
-        axios.get('http://192.168.1.43/getUsers', {
+        axios.get('/getUsers', {
             headers: {
                 'Authorization': token
             }

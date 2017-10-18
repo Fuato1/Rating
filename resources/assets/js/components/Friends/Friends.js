@@ -2,20 +2,23 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import './Friends.css'
+import Message from '../Message/Message'
+import NewMessage from '../Message/NewMessage'
 
 export default class Friends extends Component {
     constructor(props) {
         super(props)
         this.state = {
             friends: [],
-            hasFriends: false
+            hasFriends: false,
+            messages: ''
         }
     }
 
     getUserFriends() {
         const token = document.cookie
         
-        axios.get('http://192.168.1.43/getUserFriends', {
+        axios.get('/getUserFriends', {
             headers: {
                 'Authorization': token
             }
@@ -39,12 +42,8 @@ export default class Friends extends Component {
         })
     }
 
-    componentDidMount() {
-        this.getUserFriends()
-    }
-
     deleteFriend(friendId) {
-        axios.post('http://192.168.1.43/deleteFriend', {
+        axios.post('/deleteFriend', {
             friendId: friendId
         })
         .then(res => {
@@ -53,6 +52,10 @@ export default class Friends extends Component {
         .catch(err => {
             console.log(err)
         })
+    }
+
+    componentDidMount() {
+        this.getUserFriends()
     }
 
     render() {
@@ -70,7 +73,7 @@ export default class Friends extends Component {
                                     <span key={index} className="list-group-item m-2">
                                         {friend.name}
                                         <a onClick={ () => this.deleteFriend(friend.id)} className="float-right ml-5">
-                                            <i className="fa fa-times deleteFriend" aria-hidden="true"></i>
+                                            <i className="fa fa-times text-danger" aria-hidden="true"></i>
                                         </a>           
                                     </span>
                                 )}
@@ -81,7 +84,7 @@ export default class Friends extends Component {
                             <br/>
 
                             <div className="row p-2">
-                                <h5>Message</h5>
+                                
                             </div>
                             <hr/>
                         </div>
