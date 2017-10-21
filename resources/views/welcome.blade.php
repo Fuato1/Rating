@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <link href="{{ asset('img/logo.svg') }}" rel="icon" type="image/svg">
+
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <title>Rating App</title>
