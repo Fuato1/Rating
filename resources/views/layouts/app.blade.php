@@ -17,7 +17,7 @@
 </head>
 <body>
     
-    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xs-12 d-flex justify-content-end navbar navbar-dark bg-dark">
+    <nav class="col-12 col-sm-12 col-md-12 col-lg-12 col-xs-12 d-flex justify-content-end navbar navbar-dark bg-dark">
             @guest
                 <div class="col-md-12 d-flex justify-content-end">
                     <a class="btn btn-primary mr-3" href="{{ route('login') }}">Login</a>
@@ -35,7 +35,7 @@
                     </form>
                 </div>
             @endguest
-        </div>
+        </nav>
     
     @yield('content')
 </body>

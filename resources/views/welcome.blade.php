@@ -16,7 +16,7 @@
         <div class="container">
             @if (Route::has('login'))
                 <div class="row p-2">
-                    <div class="col-md-12 d-flex justify-content-end">
+                    <div class="col-md-12 d-flex justify-content-end p-3">
                         @auth
                             <a class="btn btn-primary" href="{{ url('/home') }}">Home</a>
                         @else
@@ -24,6 +24,9 @@
                             <a class="btn btn-primary" href="{{ route('register') }}">Register</a>
                         @endauth
                     </div>                
+                </div>
+                <div class="col-md-12 d-flex justify-content-center mt-5">
+                    <h1 class="text-center" style="font-size: 60px;">Rating App</h1>
                 </div>
             @endif
         </div>

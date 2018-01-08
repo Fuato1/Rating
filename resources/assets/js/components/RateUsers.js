@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import Loader from './Loader/Loader'
 
 export default class RateUsers extends Component {
     constructor(props) {
         super(props)
         this.state = {
             friends: [],
+            hasFriends: false,
             rating: 0,
             starsId: [1, 2, 3, 4, 5],
             mouseOn: false
@@ -25,7 +27,8 @@ export default class RateUsers extends Component {
             if (res.data != "") {
                 const friends = res.data
                 this.setState({
-                    friends: friends
+                    friends: friends,
+                    hasFriends: true
                 })
             }
         })
@@ -34,7 +37,10 @@ export default class RateUsers extends Component {
     }
 
     componentDidMount() {
-        this.getUserFriends()
+        setTimeout(() => {
+            this.getUserFriends()
+        }, 300)
+        clearTimeout()
     }
 
     rateFriend(friendId) {
@@ -152,47 +158,52 @@ export default class RateUsers extends Component {
     }
 
     render() {
-        return (
-            <div className="container">
-                <div className="row mt-3">
-                    <div className="col-md-4 d-flex justify-content-center mb-3">
-                        <ul className="list-group alert-primary">
-                            <h3 className="text-center p-5">Califica a tus Amigos</h3>
-                            <br/>
-
-                            {this.state.friends.map( 
-                                (friend, index) =>  
-                                <span key={index} className="list-group-item m-2">
-                                    {friend.name}
-                                    <a onClick={ () => this.rateFriend(friend.id)} className="float-right ml-5">
-                                        <i className="fa fa-star" style={{color: "yellow"}} aria-hidden="true"></i>
-                                    </a>           
-                                </span>
-                            )}
-                        </ul>
-                    </div>
-                    <div className="col-md-8 alert-primary">
-                        <h1>Califica a ...</h1>
-                        <hr/>
-
-                        <div className="row mt-5 p-2 d-flex justify-content-center">
-                            {this.state.starsId.map( (starId, index) => 
-                                <h4 key={index} id={starId} className="p-3">
-                                    <i 
-                                        onMouseOver={() => this.mouseOverStar(starId)}
-                                        onMouseLeave={() => this.mouseOverStar(starId)}
-                                        className="fa fa-star" aria-hidden="true"
-                                    ></i>
-                                </h4>
-                            )}
-                            
+        if(!this.state.hasFriends) {
+            return <Loader />
+        }
+        else {
+            return (
+                <div className="container">
+                    <div className="row mt-3">
+                        <div className="col-md-4 d-flex justify-content-center mb-3">
+                            <ul className="list-group alert-primary">
+                                <h3 className="text-center p-5">Califica a tus Amigos</h3>
+                                <br/>
+    
+                                {this.state.friends.map( 
+                                    (friend, index) =>  
+                                    <span key={index} className="list-group-item m-2">
+                                        {friend.name}
+                                        <a onClick={ () => this.rateFriend(friend.id)} className="float-right ml-5">
+                                            <i className="fa fa-star" style={{color: "yellow"}} aria-hidden="true"></i>
+                                        </a>           
+                                    </span>
+                                )}
+                            </ul>
                         </div>
-
-                        <p className="mt-5">Solo puedes calificar a tus amigos solo una vez por dia.</p>
-                        <p>Al calificar personas conseguiras puntos que iran incrementando y que podras ver en tu perfil.</p>
+                        <div className="col-md-8 alert-primary">
+                            <h1>Califica a ...</h1>
+                            <hr/>
+    
+                            <div className="row mt-5 p-2 d-flex justify-content-center">
+                                {this.state.starsId.map( (starId, index) => 
+                                    <h4 key={index} id={starId} className="p-3">
+                                        <i 
+                                            onMouseOver={() => this.mouseOverStar(starId)}
+                                            onMouseLeave={() => this.mouseOverStar(starId)}
+                                            className="fa fa-star" aria-hidden="true"
+                                        ></i>
+                                    </h4>
+                                )}
+                                
+                            </div>
+    
+                            <p className="mt-5">Solo puedes calificar a tus amigos solo una vez por dia.</p>
+                            <p>Al calificar personas conseguiras puntos que iran incrementando y que podras ver en tu perfil.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
     }
 }

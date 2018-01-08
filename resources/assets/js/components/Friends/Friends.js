@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import './Friends.css'
 import Message from '../Message/Message'
 import NewMessage from '../Message/NewMessage'
+import Loader from '../Loader/Loader'
 
 export default class Friends extends Component {
     constructor(props) {
@@ -16,26 +17,14 @@ export default class Friends extends Component {
     }
 
     getUserFriends() {
-        const token = document.cookie
-        
-        axios.get('/getUserFriends', {
-            headers: {
-                'Authorization': token
-            }
-        })
+        axios.get('http://localhost/getUserFriends')
         .then(res => {
-            if (res.data != "") {
-                const friends = res.data
-                this.setState({
-                    friends: friends,
-                    hasFriends: true
-                })
-            }
-            else {
-                this.setState({
-                    hasFriends: false
-                })
-            }
+            const friends = res.data
+                
+            this.setState({
+                friends: friends,
+                hasFriends: true
+            })
         })
         .catch(err => {
             console.log(err)
@@ -55,44 +44,17 @@ export default class Friends extends Component {
     }
 
     componentDidMount() {
-        this.getUserFriends()
+        setTimeout(() => {
+            this.getUserFriends()
+        }, 300)
+        clearTimeout()
     }
 
     render() {
-        if (this.state.hasFriends) {
-            return (
-                <div className="container">
-                    <div className="row mt-3">
-                        <div className="col-md-4 d-flex justify-content-center mb-3">
-                            <ul className="list-group alert-primary">
-                                <h3 className="text-center">Amigos</h3>
-                                <br/>
-
-                                {this.state.friends.map( 
-                                    (friend, index) =>  
-                                    <span key={index} className="list-group-item m-2">
-                                        {friend.name}
-                                        <a onClick={ () => this.deleteFriend(friend.id)} className="float-right ml-5">
-                                            <i className="fa fa-times text-danger" aria-hidden="true"></i>
-                                        </a>           
-                                    </span>
-                                )}
-                            </ul>
-                        </div>
-                        <div className="col-md-7 alert-primary">
-                            <h3 className="text-center">Notificaciones</h3>
-                            <br/>
-
-                            <div className="row p-2">
-                                
-                            </div>
-                            <hr/>
-                        </div>
-                    </div>
-                </div>
-            )  
-        } 
-        else {
+        if(!this.state.hasFriends) {
+            return <Loader />
+        }
+        if (this.state.friends === []) {
             return (
                 <div className="container">
                     <div className="col-md-12 d-flex justify-content-center p-3">
@@ -114,6 +76,39 @@ export default class Friends extends Component {
                         </div>
                     </div>
                 </div>  
+            )
+        } 
+        else {
+            return (
+                <div className="container">
+                    <div className="row mt-3">
+                        <div className="col-md-4 d-flex justify-content-center mb-3">
+                            <ul className="list-group alert-primary">
+                                <h3 className="text-center">Amigos</h3>
+                                <br/>
+        
+                                {this.state.friends.map( 
+                                    (friend, index) =>  
+                                    <span key={index} className="list-group-item m-2">
+                                        {friend.name}
+                                        <a onClick={ () => this.deleteFriend(friend.id)} className="float-right ml-5">
+                                            <i className="fa fa-times text-danger" aria-hidden="true"></i>
+                                        </a>           
+                                    </span>
+                                )}
+                            </ul>
+                        </div>
+                        <div className="col-md-7 alert-primary">
+                            <h3 className="text-center">Notificaciones</h3>
+                            <br/>
+        
+                            <div className="row p-2">
+                                
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
+                </div>
             )
         }
     }

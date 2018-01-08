@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import Loader from './Loader/Loader'
 
 export default class FindUsers extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            users: []
+            users: [],
+            hasUsers: false
         }
     }
 
@@ -23,7 +25,8 @@ export default class FindUsers extends Component {
                 (user, index) => user.isFriend = "fa fa-star-o"
             )
             this.setState({
-                users: users
+                users: users,
+                hasUsers: true
             })
         })
         .catch(err => {
@@ -32,7 +35,10 @@ export default class FindUsers extends Component {
     }
 
     componentDidMount() {
-        this.getUsers()
+        setTimeout(() => {
+            this.getUsers()
+        }, 300)
+        clearTimeout()
     }
 
     follow(userId) {
@@ -60,27 +66,32 @@ export default class FindUsers extends Component {
     }
 
     render() {
-        return (
-            <div className="container">
-                <div className="col-md-12 d-flex justify-content-center p-3">
-                    <h1 className="text-center">Encuentra amigos</h1>
-                </div>
-                <div className="row">
-                    <div className="col-md-12 d-flex justify-content-center alert-primary">
-                        <ul className="list-group p-3">
-                            {this.state.users.map( 
-                                (user) => 
-                                <span key={user.id} className="list-group-item m-2">
-                                    {user.name}
-                                    <a onClick={() => this.follow(user.id) } className="ml-5 float-right">
-                                        <i className={user.isFriend} aria-hidden="true"></i>
-                                    </a>
-                                </span>
-                            )}
-                        </ul>
+        if(!this.state.hasUsers) {
+            return <Loader />
+        }
+        else {
+            return (
+                <div className="container">
+                    <div className="col-md-12 d-flex justify-content-center p-3">
+                        <h1 className="text-center">Encuentra amigos</h1>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-12 d-flex justify-content-center alert-primary">
+                            <ul className="list-group p-3">
+                                {this.state.users.map( 
+                                    (user) => 
+                                    <span key={user.id} className="list-group-item m-2">
+                                        {user.name}
+                                        <a onClick={() => this.follow(user.id) } className="ml-5 float-right">
+                                            <i className={user.isFriend} aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                )}
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
     }
 }

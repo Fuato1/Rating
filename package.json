@@ -25,9 +25,7 @@
     "bootstrap": "^4.0.0-beta",
     "font-awesome": "^4.7.0",
     "loaders.css": "^0.1.2",
-    "material-ui": "^1.0.0-beta.16",
-    "react-loaders": "^2.6.0",
+    "react-loaders": "^3.0.1",
     "react-router-dom": "^4.2.2"
-  },
-  "proxy": "http://rating.com"
+  }
 }
